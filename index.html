@@ -34,8 +34,8 @@
    map.on('load', function() {
 
   map.addSource('glacier_inventory_region_extract-2', {
-    type: 'geojson',
-    data: './glacier_inventory_region_extract-2.geojson'
+    type: 'csv',
+    data: './glacier_inventory_region_extract-2.csv '
   });
   // add heatmap layer here
   map.addLayer({
@@ -137,8 +137,6 @@ map.on('click', 'total_area', function (e) {
     .setLngLat(e.features[0].geometry.coordinates)
     .setHTML('<b>Total Area:</b> '+ e.features[0].properties.total_area)
     .addTo(map);
-});
-
 });
 
   </script>
