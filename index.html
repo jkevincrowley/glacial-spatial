@@ -8,18 +8,33 @@
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.0/mapbox-gl.css' rel='stylesheet' />
     <style>
       body {
-        margin: 0;
-        padding: 0;
-      }
-
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
-    </style>
+  margin: 0;
+  padding: 0;
+}
+h2,
+h3 {
+  margin: 10px;
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
+p {
+  font-size: 0.85em;
+  margin: 10px;
+  text-align: left;
+}
+/**
+* Create a position for the map
+* on the page */
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}    </style>
 </head>
+
 <body>
   <div id='map'></div>
   <script>
@@ -35,8 +50,9 @@
 
   map.addSource('glacier-data', {
     "type": "geojson",
-    "data": "./glacier_inventory_region_extract-2.geojson"
+    "data": "glacier_inventory_region_extract-2"
   });
+       
   // add heatmap layer here
   map.addLayer({
         "id": "glacier_name",
@@ -131,7 +147,7 @@
     }, 'waterway-label');
 });
 
-//click on tree to view glacier_area in a popup
+//click on glacier to view total_area in a popup
 map.on('click', 'total_area', function (e) {
   new mapboxgl.Popup()
     .setLngLat(e.features[0].geometry.coordinates)
